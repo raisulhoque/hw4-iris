@@ -1,0 +1,8 @@
+streamlit>=1.51.0
+dash>=2.0.0
+gunicorn
+panel
+plotly
+pandas
+numpy
+scikit-learn
