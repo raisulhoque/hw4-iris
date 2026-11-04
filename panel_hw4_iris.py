@@ -1,4 +1,3 @@
-
 import panel as pn
 import plotly.express as px
 import pandas as pd
@@ -37,6 +36,7 @@ marker_size = pn.widgets.IntSlider(
     value=10
 )
 
+
 def update_scatter(x, y, color_species, size):
 
     color = 'target' if color_species else None
@@ -72,19 +72,25 @@ def update_histogram(x, y, color_species):
     return fig
 
 
-scatter_plot = pn.bind(
-    update_scatter,
-    x_axis,
-    y_axis,
-    color_by_species,
-    marker_size
+scatter_plot = pn.pane.Plotly(
+    pn.bind(
+        update_scatter,
+        x_axis,
+        y_axis,
+        color_by_species,
+        marker_size
+    ),
+    sizing_mode='stretch_width'
 )
 
-histogram = pn.bind(
-    update_histogram,
-    x_axis,
-    y_axis,
-    color_by_species
+histogram = pn.pane.Plotly(
+    pn.bind(
+        update_histogram,
+        x_axis,
+        y_axis,
+        color_by_species
+    ),
+    sizing_mode='stretch_width'
 )
 
 layout = pn.Column(
